@@ -8,9 +8,9 @@ const depositAmountInput = document.getElementById('depositAmount');
 const depositForm = document.getElementById('depositForm');
 
 
-const creditAccountNumberInput = document.getElementById('creditAccountNumber');
-const creditAmountInput = document.getElementById('creditAmount');
-const creditForm = document.getElementById('creditForm');
+const withdrawAccountNumberInput = document.getElementById('withdrawAccountNumber');
+const withdrawAmountInput = document.getElementById('withdrawAmount');
+const withdrawForm = document.getElementById('withdrawForm');
 
 
 const accounts = []
@@ -22,8 +22,8 @@ function CreateBankAccount(customerName, balance) {
   this.accountNumber = Date.now();
   this.balance = balance ?? 0;
 
-  this.deposit = (amount) => {
-    const accountExists = accounts.find((account) => account.accountNumber === Number(depositAccountNumberInput.value))
+  this.deposit = (accountNumber, amount) => {
+    const accountExists = accounts.find((account) => account.accountNumber === accountNumber)
     if (!accountExists) {
       console.log("This account is not exists");
       return;
@@ -31,6 +31,16 @@ function CreateBankAccount(customerName, balance) {
     accountExists.balance = accountExists.balance + amount
     console.log(accounts);
 
+  }
+
+  this.withdraw = (accountNumber, amount) => {
+    const accountExists = accounts.find((account) => account.accountNumber === accountNumber)
+    if (!accountExists) {
+      console.log("This account is not exists");
+      return;
+    }
+    accountExists.balance = accountExists.balance - amount
+    console.log(accounts);
   }
 }
 
@@ -51,11 +61,20 @@ depositForm.addEventListener('submit', function (event) {
   event.preventDefault();
 
   const userAccount = new CreateBankAccount();
-  userAccount.deposit(Number(depositAmountInput.value))
+  userAccount.deposit(Number(depositAccountNumberInput.value), Number(depositAmountInput.value))
+  depositAmountInput.value = ''
+  depositAccountNumberInput.value = ''
+
 });
 
-creditForm.addEventListener('submit', function (event) {
+withdrawForm.addEventListener('submit', function (event) {
   event.preventDefault();
+
+  const userAccount = new CreateBankAccount();
+  userAccount.withdraw(Number(withdrawAccountNumberInput.value), Number(withdrawAmountInput.value))
+  withdrawAmountInput.value = ''
+  withdrawAccountNumberInput.value = ''
+
 });
 
 
