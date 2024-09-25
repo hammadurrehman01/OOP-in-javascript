@@ -44,8 +44,6 @@ function CreateBankAccount(customerName, balance) {
   }
 }
 
-
-
 createAccountForm.addEventListener('submit', function (event) {
   event.preventDefault();
 
@@ -76,8 +74,3 @@ withdrawForm.addEventListener('submit', function (event) {
   withdrawAccountNumberInput.value = ''
 
 });
-
-
-
-
-// console.log(hammadAccount, rakeshAccount);
