@@ -15,8 +15,6 @@ const withdrawForm = document.getElementById('withdrawForm');
 
 const accounts = []
 
-
-
 function CreateBankAccount(customerName, balance) {
   this.customerName = customerName;
   this.accountNumber = Date.now();
@@ -74,3 +72,5 @@ withdrawForm.addEventListener('submit', function (event) {
   withdrawAccountNumberInput.value = ''
 
 });
+
+
