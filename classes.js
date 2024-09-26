@@ -1,4 +1,4 @@
-export class BackAccount {
+class BackAccount {
     customerName;
     accountNumber;
     balance;
