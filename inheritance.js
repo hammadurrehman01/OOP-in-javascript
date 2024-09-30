@@ -1,34 +1,37 @@
-function BankAccount(customerName, balance = 0) {
-    this.customerName = customerName;
-    this.accountNumber = Date.now();
-    this.balance = balance;
+class BankAccount {
+    customerName;
+    accountNumber;
+    balance;
+
+    constructor(customerName, balance) {
+        this.customerName = customerName;
+        this.accountNumber = Date.now();
+        this.balance = balance;
+    }
+
+    deposit(amount) {
+        this.balance = this.balance + amount
+    }
+
+    withdraw(amount) {
+        this.balance = this.balance - amount
+    }
 }
 
-BankAccount.prototype.deposit = function (amount) {
-    this.balance = this.balance + amount;
+
+class DonationAccount extends BankAccount {
+
+    constructor(customerName, balance) {
+        super(customerName, balance)
+    }
+
+    sendDonation(amount) {
+        this.balance = this.balance - amount
+        console.log('Donation given Rs: ' + amount);
+    }
 }
 
-BankAccount.prototype.withdraw = function (amount) {
-    this.balance = this.balance - amount;
-}
+const hammadAccount = new DonationAccount('Hammad Ur Rehman', 40000)
+hammadAccount.sendDonation(5000)
 
-
-function CurrentAccount(customerName, balance = 0) {
-    BankAccount.call(this, customerName, balance);
-    this.transactionLimit = 50000;
-}
-
-CurrentAccount.prototype.takeBusinessLoan = function (amount) {
-    console.log("Taken Buiness Loan: ", amount);;
-}
-
-CurrentAccount.prototype.deposit = function (amount) {
-    this.balance = this.balance + amount;
-}
-
-CurrentAccount.prototype.withdraw = function (amount) {
-    this.balance = this.balance - amount;
-}
-    
-const hammadAccount = new CurrentAccount("Hammad Ur Rehman", 1000);
 console.log(hammadAccount);
