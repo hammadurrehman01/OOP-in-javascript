@@ -23,6 +23,11 @@ class BankAccount {
         }
         this.#balance = amount
     }
+
+    getBalance() {
+        return this.#balance;
+    }
+
 }
 
 
@@ -42,3 +47,4 @@ const hammadAccount = new DonationAccount('Hammad Ur Rehman', 40000)
 hammadAccount.setBalance(400)
 
 console.log(hammadAccount);
+// console.log(hammadAccount.#balance);
