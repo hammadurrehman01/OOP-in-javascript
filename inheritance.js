@@ -29,6 +29,6 @@ CurrentAccount.prototype.deposit = function (amount) {
 CurrentAccount.prototype.withdraw = function (amount) {
     this.balance = this.balance - amount;
 }
-
+    
 const hammadAccount = new CurrentAccount("Hammad Ur Rehman", 1000);
 console.log(hammadAccount);
