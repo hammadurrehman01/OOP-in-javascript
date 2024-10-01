@@ -24,7 +24,7 @@ class BankAccount {
         this.#balance = amount
     }
 
-    getBalance() {
+    get Balance() {
         return this.#balance;
     }
 
@@ -37,14 +37,21 @@ class DonationAccount extends BankAccount {
         super(customerName, balance)
     }
 
+    #calculatingInterest(amount) {
+        console.log("Calculating Interest :", amount);
+    }
+
     sendDonation(amount) {
+        this.#calculatingInterest(2000)
         this.balance = this.balance - amount
         console.log('Donation given Rs: ' + amount);
     }
 }
 
 const hammadAccount = new DonationAccount('Hammad Ur Rehman', 40000)
-hammadAccount.setBalance(400)
+// hammadAccount.setBalance(400)
+hammadAccount.sendDonation(4000)
+// hammadAccount.calculatingInterest(4000)
 
 console.log(hammadAccount);
-// console.log(hammadAccount.#balance);
+console.log(hammadAccount.Balance); 
