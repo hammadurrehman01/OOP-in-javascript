@@ -23,4 +23,4 @@ const users = [user1, user2, user3];
 // users.sort(User.compareByAge)
 users.sort(User.compareByIncome)
 
-console.log(users); 
+console.log(users);
