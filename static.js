@@ -37,4 +37,4 @@ class User {
 // users.sort(User.compareByAge)
 // users.sort(User.compareByIncome)
 
-console.log(users);
+// console.log(users);
